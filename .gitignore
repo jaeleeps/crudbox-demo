@@ -42,4 +42,5 @@ testem.log
 Thumbs.db
 .vscode
 
-/env/*.ts
+/env/testFirebaseConfig.ts
+/env/testMongoDBAtlasConfig.ts
