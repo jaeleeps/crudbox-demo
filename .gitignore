@@ -43,4 +43,4 @@ Thumbs.db
 .vscode
 
 /env/testFirebaseConfig.ts
-/env/testMongoDBAtlasConfig.ts
+/env/testFirebaseConfig.ts
