@@ -6,7 +6,8 @@ import * as async from 'async';
 import { MongoClient } from 'mongodb';
 import firebase from 'firebase';
 import Error = firebase.auth.Error;
-const filePath = 'listings.csv';
+import * as csvParser from "csv-parser";
+const filePath = 'Jobs/listings.csv';
 
 function processRow(row: any): Listing {
   return {
@@ -71,6 +72,7 @@ async function handleParsedRow(row: Listing, callback: (err: any | null) => void
 
 // Start parsing the large CSV file
 async function runJob(): Promise<void> {
+  console.log("Mongo Listings");
   const client = await connectToDB();
   const onRowParsed = async (row: Listing, callback: (err: any | null) => void) => {
     try {

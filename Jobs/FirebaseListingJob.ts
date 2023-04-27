@@ -1,11 +1,11 @@
 import { createReadStream } from 'fs';
 import * as csvParser from 'csv-parser';
 import { Listing } from './AirbnbDataModels.interface';
-import { testFirebaseConfig } from '../../crudify/__test__/env/testFirebaseConfig';
+import { testFirebaseConfig } from '../env/testFirebaseConfig';
 import firebase from 'firebase';
 import * as async from 'async';
 
-const filePath = 'listings.csv';
+const filePath = 'Jobs/listings.csv';
 
 function processRow(row: any): Listing {
   return {
@@ -68,6 +68,7 @@ async function handleParsedRow(row: Listing, callback: (err: any | null) => void
 
 // Start parsing the large CSV file
 async function runJob(): Promise<void> {
+  console.log("Firestore Listings");
   firebase.initializeApp(testFirebaseConfig);
 
   const onRowParsed = async (row: Listing, callback: (err: any | null) => void) => {
@@ -90,4 +91,5 @@ async function runJob(): Promise<void> {
   });
 }
 
+console.log("[init] Firestore Listings");
 runJob();
